@@ -28,11 +28,19 @@ Posting the issue you'd like an opinion for in the wrong subreddit could result 
 ## Executive Summary 
 To answer this question, I created a model using logistic regression to help redditors post in the correct subreddit. I collected 3,000 posts from both *Am I the Asshole* and *Relationship Advice* subreddits, cleaned and transformed the data using the TfidfVectorizer, and used the post titles to predict the subreddit. 
  
+![Top 10 Titles](./images/aitatop10.png)
+As shown in the bar chart above, there a highly common words in the titles of each subreddit that overlap, such as girlfriend, boyfriend, and ex. 
+
+![Top 50 Words Venn Diagram](./images/aitavenn.png)
+The venn diagram illustrates how many of the top 50 words in the titles of each subreddit overlap. With more than half of the words overlapping, you can see how it could be difficult to know which subreddit is the correct one to share in. 
+
 The logistic regression model performed well, with train and test accuracies and f1-score all around 97%. False predictions were relatively low, and the model outperformed the baseline of 50%. In comparison, the decision tree model performed well, but not as well as the logistic regression, with a train and test accuracy and f1-score of around 94%.
 
 To further assist redditors, I **recommend** a tool called *Reddy* that analyzes the post title and recommends a suitable subreddit. This not only helps redditors post in the appropriate subreddit, but also makes the process easier for moderators who need to filter posts. Additionally, it ensures that members or 'potential assholes' see more posts related to the subreddit they joined.
 
 Overall, using logistic regression can predict which subreddit a post belongs to with high accuracy, and adding a tool like Reddy can make Reddit more user-friendly for everyone involved.
+
+![Reddy](./images/snoo-small.png)
 
 ---
 
@@ -51,63 +59,63 @@ Overall, using logistic regression can predict which subreddit a post belongs to
 ---
 |Feature|Type|Dataset|Description|
 |---|---|---|---| 
-|**title**|*object*|reddit_final|The titles of the subreddit posts cleaned and vectorized |
-|**subreddit**|*int*|reddit_final|The subreddits encoded as Relationship Advice: 1 and AITA: 0 for predictions |
+|**subreddit**|*int64*|reddit_final|The subreddits encoded as Relationship Advice: 1 and AITA: 0 for predictions |
 |**selftext**|*object*|reddit_final|The bodies of the subreddit posts cleaned and vectorized |
+|**gilded**|*int64*|reddit_final|The number of times the post has been gilded |
+|**title**|*object*|reddit_final|The titles of the subreddit posts cleaned and vectorized |
+|**subreddit_name_prefixed**|*float64*|reddit_final|The name of the subreddit |
+|**hide_score**|*float64*|reddit_final|Whether the post score is hidden |
+|**upvote_ratio**|*float64*|reddit_final|The ratio of upvotes to total votes on the post |
+|**total_awards_received**|*int64*|reddit_final|The total number of awards the post has received |
+|**is_reddit_media_domain**|*int64*|reddit_final|Whether the post is hosted on a Reddit media domain |
+|**score**|*int64*|reddit_final|The score of the post |
+|**author_premium**|*float64*|reddit_final|Whether the author has a Reddit premium account |
+|**edited**|*int64*|reddit_final|Whether the post has been edited |
+|**author_flair_richtext**|*int64*|reddit_final|The text of the author's flair |
+|**is_self**|*int64*|reddit_final|Whether the post is a self-post |
+|**author_flair_type**|*int64*|reddit_final|The type of the author's flair |
+|**domain**|*int64*|reddit_final|The domain of the URL linked in the post |
+|**allow_live_comments**|*float64*|reddit_final|Whether live comments are allowed on the post |
+|**archived**|*int64*|reddit_final|Whether the post has been archived |
+|**no_follow**|*int64*|reddit_final|Whether the post has the "no follow" attribute |
+|**is_crosspostable**|*int64*|reddit_final|Whether the post is crosspostable |
+|**over_18**|*int64*|reddit_final|Whether the post is marked NSFW |
+|**awarders**|*int64*|reddit_final|The number of users who have given the post an award |
+|**can_gild**|*int64*|reddit_final|Whether the post can be gilded |
+|**locked**|*int64*|reddit_final|Whether the post is locked |
+|**treatment_tags**|*int64*|reddit_final|Treatment tags applied to the post |
+|**is_robot_indexable**|*int64*|reddit_final|Whether the post is indexable by search engines |
+|**num_comments**|*int64*|reddit_final|The number of comments on the post |
+|**send_replies**|*int64*|reddit_final|Whether replies are enabled for the post |
+|**author_patreon_flair**|*int64*|reddit_final|Whether the author has a Patreon flair |
+|**subreddit_subscribers**|*int64*|reddit_final|The number of subscribers to the subreddit |
+|**created_utc**|*int64*|reddit_final|The time the post was created in UTC |
+|**num_crossposts**|*int64*|reddit_final|Number of times the post has been cross-posted |
+|**retrieved_utc**|*int64*|reddit_final|UTC time when the post was retrieved by the API |
+|**updated_utc**|*int64*|reddit_final|UTC time when the post was last updated by the author |
+|**author_cakeday**|*int64*|reddit_final|Boolean indicating if the author's Reddit account is celebrating a cake day |
+|**subreddit_id_t5_2r0cn**|*float64*|reddit_final|Encoded subreddit id |
+|**removed_by_automod_filtered**|*float64*|reddit_final|Indicates whether the post was removed by automoderator |
+|**removed_by_deleted**|*int64*|reddit_final|Indicates whether the post was removed by the author |
+|**removed_by_reddit**|*float64*|reddit_final|Indicates whether the post was removed by Reddit |
+|**removed_by_nan**|*int64*|reddit_final|Indicates whether the removal status of the post is unknown |
+|**thumbnail_nsfw**|*int64*|reddit_final|Indicates whether the thumbnail image for the post is NSFW |
+|**thumbnail_self**|*int64*|reddit_final|Indicates whether the post has a self-post thumbnail |
+|**gildings_{}**|*int64*|reddit_final|Number of times the post has been gilded |
+|**title_word_count**|*int64*|reddit_final|Number of words in the post's title |
+|**selftext_word_count**|*int64*|reddit_final|Number of words in the post's selftext |
+|**subreddit_id_t5_2txi0n**|*float64*|reddit_final|Encoded subreddit id |
+|**subreddit_id_t5_37roo**|*float64*|reddit_final|Encoded subreddit id |
+|**subreddit_id_t5_5iegdf**|*float64*|reddit_final|Encoded subreddit id |
+|**subreddit_id_t5_62obsy**|*float64*|reddit_final|Encoded subreddit id |
+|**subreddit_id_t5_6anqhn**|*float64*|reddit_final|Encoded subreddit id |
+|**subreddit_id_t5_6r00uj**|*float64*|reddit_final|Encoded subreddit id |
+|**subreddit_type_restricted**|*float64*|reddit_final|Indicates whether the subreddit allows only certain users to post|
+|**subreddit_type_user**|*float64*|reddit_final|Indicates whether the subreddit was created by a user |
+|**thumbnail_other**|*float64*|reddit_final|Indicates whether the post has a non-default thumbnail |
+|**gildings_'gid_2': 0**|*float64*|reddit_final|Number of times the post has been gilded with gid_2 |
+|**gildings_'gid_3': 0}**|*float64*|reddit_final|Number of times the post has been gilded with gid_3 |
+|**gildings_{'gid_1': 0**}|*float64*|reddit_final|The number of awards with the id {'gid_1': 0} received for the post|
+|**gildings_{'gid_1': 1}**|*float64*|reddit_final|The number of awards with the id {'gid_1': 1} received for the post|
+|**gildings_{'gid_1': 4}**|*float64*|reddit_final|The number of awards with the id {'gid_1': 4} received for the post|
 
-
-
-
-1. [*How does a real estate agent set my home asking price?*](https://themortgagereports.com/42630/how-does-a-real-estate-agent-set-my-home-asking-price) 
-
-#### Methods
-The original datasets were imported and cleaned using the Python Data Analysis Library (pandas) to ensure the findings would be accurate and to prevent any issues with analysis. The datasets were saved as new datasets following data cleaning, and these dataframes were transformed a final time before being used for modeling with Scikit-learn. Visualizations were created using Matplotlib and Seaborn libraries during exploratory data analysis and following modeling to show correlations. Visualizations utilized to display the data include heatmaps, histograms, scatterplots, and boxplots. Conclusion and recommendations were given based on the findings of the analyzed data.
-
-## Conclusions and Recommendations
-
-**In conclusion,** the Lasso regression model (compared to Linear and Ridge) was the most successful in predicting home sale prices, with a Root Mean Square Error of 26794.86 and an R2 of around 90%. This indicates that the predicted home prices are on average within $26,794.86 of the actual home price, with 90% of the variability of the sale price explained by the predictor variables (home qualities). The baseline Root Mean Square Error was 81999.94, and with the Root Mean Square Error of the Lasso model being less than a third of that, this shows that the model works better than the baseline. 
-
-![Top 20 Qualities](./images/amescorr20.png)
-
-Based on the correlations between home qualities and sale price, **recommendations** for realtors wanting to help their clients would be:
-
-1. Focus on the overall quality of the home, making sure any obvious repairs are completed before listing.
-
-2. Adding extra square footage in living or garage space can increase value.
-
-3. Improving the quality of the kitchen can raise the sale price.
-
-4. If the home has a basement that you can easily walk through (80+ inches), this should be showcased in the listing. 
-
-![Top 20 Coefficients](./images/amescoef.png) 
-
-Based on the coefficients (increase in Sale Price based on one unit change in home quality), realtors can **recommend** homeowners to focus on the following areas to increase the sale price of their home:
-
-1. Gr Liv Area: Increasing the above ground living area in the home could lead to a significant increase in the sale price. ($27009 per increase)
-
-2. Overall Qual: Improving the overall quality of the home, such as through renovations or upgrades, can also have a large impact on the sale price. ($11401 per increase in Overall Qual rating)
-
-3. Neighborhood_NridgHt and Neighborhood_StoneBr: Being in a desirable neighborhood, such as Northridge Heights and Stone Brook, can also increase the sale price - if the home is located in one of these neighborhoods, this should be shown in the listing. ($6192 - 8462 increase based on neighborhood)
-
-4. 1st Flr SF: Increasing the size of the first floor of the home can also have a positive impact on the sale price. ($7742 per increase)
-
-5. Kitchen Qual: Improving the quality of the kitchen, through upgrades or renovations, can increase the sale price. ($6562 per increase in Kitchen Qual rating)
-
-6. Bsmt Qual: If the home has a basement that you can easily walk through (80+ inches), this should be showcased in the listing. ($6343 increase)
-
-7. Bsmt Exposure: Showcasing a basement that has an access to walk outside can increase the sale price. ($6343 increase) 
-
-8. Garage Cars: Increasing the number of cars the garage can hold, through expanding or adding a garage, can also increase the sale price. ($5372 per car space increase) 
-
-9. Exter Qual: Improving the quality of the exterior of the home, through renovations or upgrades, can also have a positive impact on the sale price. ($5343 per increase in Exter Qual rating) 
-
-Realtors should consider these factors when guiding homeowners on where to invest their time and money in preparing their home to sell, as well as when choosing which home qualities to feature in a lisiting. 
-
-
-These recommendations are consistent with articles regarding home renovations that increase home value:
-
-1. [*Top 15 Home Updates That Pay Off*](https://www.hgtv.com/lifestyle/real-estate/top-home-updates-that-pay-off-pictures) 
-2. [*10 Home Updates That Quickly Increase Value*](https://www.ahs.com/home-matters/real-estate/home-updates-increase-value/) 
-3. [*These 7 Major Home Renovations Add Value*](https://www.bhg.com/home-improvement/advice/expert-advice/4-home-renovations-that-add-major-value-281474979622820/)  
-
-**Bonus:** an *amazing* chart can be found [*here*](https://cdn.fixr.com/content/01-ROI-9a7b.jpg) from [*this article*](https://www.fixr.com/resources/cost-vs-value) 
