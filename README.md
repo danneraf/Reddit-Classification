@@ -28,10 +28,10 @@ Posting the issue you'd like an opinion for in the wrong subreddit could result 
 ## Executive Summary 
 To answer this question, I created a model using logistic regression to help redditors post in the correct subreddit. I collected 3,000 posts from both *Am I the Asshole* and *Relationship Advice* subreddits, cleaned and transformed the data using the TfidfVectorizer, and used the post titles to predict the subreddit. 
  
-![Top 10 Titles](/images/aitatop10.png)
+![Top 10 Titles](../Images/aitatop10.png)
 As shown in the bar chart above, there a highly common words in the titles of each subreddit that overlap, such as girlfriend, boyfriend, and ex. 
 
-![Top 50 Words Venn Diagram](/images/aitavenn.png)
+![Top 50 Words Venn Diagram](./Images/aitavenn.png)
 The venn diagram illustrates how many of the top 50 words in the titles of each subreddit overlap. With more than half of the words overlapping, you can see how it could be difficult to know which subreddit is the correct one to share in. 
 
 The logistic regression model performed well, with train and test accuracies and f1-score all around 97%. False predictions were relatively low, and the model outperformed the baseline of 50%. In comparison, the decision tree model performed well, but not as well as the logistic regression, with a train and test accuracy and f1-score of around 94%.
@@ -40,7 +40,7 @@ To further assist redditors, I **recommend** a tool called *Reddy* that analyzes
 
 Overall, using logistic regression can predict which subreddit a post belongs to with high accuracy, and adding a tool like Reddy can make Reddit more user-friendly for everyone involved.
 
-![Reddy](/images/snoo-small.png)
+![Reddy](./images/snoo-small.png)
 
 ---
 
