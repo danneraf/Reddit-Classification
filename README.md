@@ -28,10 +28,12 @@ Posting the issue you'd like an opinion for in the wrong subreddit could result 
 ## Executive Summary 
 To answer this question, I created a model using logistic regression to help redditors post in the correct subreddit. I collected 3,000 posts from both *Am I the Asshole* and *Relationship Advice* subreddits, cleaned and transformed the data using the TfidfVectorizer, and used the post titles to predict the subreddit. 
  
-![Top 10 Titles](../Images/aitatop10.png)
+![Top 10 Titles](./Images/aitatop10.png)
+
 As shown in the bar chart above, there a highly common words in the titles of each subreddit that overlap, such as girlfriend, boyfriend, and ex. 
 
 ![Top 50 Words Venn Diagram](./Images/aitavenn.png)
+
 The venn diagram illustrates how many of the top 50 words in the titles of each subreddit overlap. With more than half of the words overlapping, you can see how it could be difficult to know which subreddit is the correct one to share in. 
 
 The logistic regression model performed well, with train and test accuracies and f1-score all around 97%. False predictions were relatively low, and the model outperformed the baseline of 50%. In comparison, the decision tree model performed well, but not as well as the logistic regression, with a train and test accuracy and f1-score of around 94%.
@@ -40,20 +42,20 @@ To further assist redditors, I **recommend** a tool called *Reddy* that analyzes
 
 Overall, using logistic regression can predict which subreddit a post belongs to with high accuracy, and adding a tool like Reddy can make Reddit more user-friendly for everyone involved.
 
-![Reddy](./images/snoo-small.png)
-
+![Reddy](./Images/snoo-small.png)
+ 
 ---
 
 ## Datasets
 ---
-* [`ra2.csv`](/datasets/ra2.csv): Collected Relationship Advice Data  
-* [`aita2.csv`](/datasets/aita2.csv): Collected AITA Data  
-* [`ra_cleaned.csv`](/datasets/ra_cleaned.csv): Cleaned Relationship Advice Data
-* [`aita_cleaned.csv`](/datasets/aita_cleaned.csv): Cleaned AITA Data
-* [`ra_eda.csv`](/datasets/ra_eda.csv): Relationship Advice Data After EDA
-* [`aita_eda.csv`](/datasets/aita_eda.csv): AITA Data After EDA  
-* [`reddit_combined.csv`](/datasets/reddit_combined.csv): Relationship Advice Data and AITA Data Combined
-* [`reddit_final.csv`](/datasets/reddit_final.csv): Final Combined Reddit Dataset Used for Modeling   
+* [`ra2.csv`](./Datasets/ra2.csv): Collected Relationship Advice Data  
+* [`aita2.csv`](./Datasets/aita2.csv): Collected AITA Data  
+* [`ra_cleaned.csv`](./Datasets/ra_cleaned.csv): Cleaned Relationship Advice Data
+* [`aita_cleaned.csv`](./Datasets/aita_cleaned.csv): Cleaned AITA Data
+* [`ra_eda.csv`](./Datasets/ra_eda.csv): Relationship Advice Data After EDA
+* [`aita_eda.csv`](./Datasets/aita_eda.csv): AITA Data After EDA  
+* [`reddit_combined.csv`](./Datasets/reddit_combined.csv): Relationship Advice Data and AITA Data Combined
+* [`reddit_final.csv`](./Datasets/reddit_final.csv): Final Combined Reddit Dataset Used for Modeling   
 
 ## Data Dictionary
 ---
